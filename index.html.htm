@@ -1,14 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Untitled</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,12 +7,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Pop-up Notification -->
-    <div id="popup" class="popup">
+    <!-- Welcome Pop-Up -->
+    <div id="welcome-popup" class="popup">
         <div class="popup-content">
             <h2>Welcome to OAU Students Calendar</h2>
-            <p>Plan your lecture timetable and notes with ease!</p>
-            <button id="close-popup">Close</button>
+            <p id="motivational-quote"></p>
+            <button id="close-popup" onclick="closeWelcomePopup()">Close</button>
         </div>
     </div>
 
@@ -77,26 +67,25 @@
 
         <!-- Timer and Stopwatch Section -->
         <section id="timer-section">
-    <h2>Timer and Stopwatch</h2>
-    <div class="timer-wrapper">
-        <h3>Automatic Timer</h3>
-        <div class="timer-display">
-            <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
-        </div>
-    </div>
-    <div class="stopwatch-wrapper">
-        <h3>Manual Stopwatch</h3>
-        <div class="stopwatch-display">
-            <span id="stopwatch-minutes">00</span>:<span id="stopwatch-seconds">00</span>
-        </div>
-        <div class="stopwatch-buttons">
-            <button id="start-stopwatch">Start</button>
-            <button id="stop-stopwatch">Stop</button>
-            <button id="reset-stopwatch">Reset</button>
-        </div>
-    </div>
-</section>
-
+            <h2>Timer and Stopwatch</h2>
+            <div class="timer-wrapper">
+                <h3>Automatic Timer</h3>
+                <div class="timer-display">
+                    <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+                </div>
+            </div>
+            <div class="stopwatch-wrapper">
+                <h3>Manual Stopwatch</h3>
+                <div class="stopwatch-display">
+                    <span id="stopwatch-minutes">00</span>:<span id="stopwatch-seconds">00</span>
+                </div>
+                <div class="stopwatch-buttons">
+                    <button id="start-stopwatch">Start</button>
+                    <button id="stop-stopwatch">Stop</button>
+                    <button id="reset-stopwatch">Reset</button>
+                </div>
+            </div>
+        </section>
 
         <!-- Calendar Section -->
         <section id="calendar-section">
@@ -110,10 +99,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
 </body>
 </html>
