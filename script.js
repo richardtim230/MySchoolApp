@@ -236,3 +236,64 @@ function loadCalendar() {
 window.addEventListener('load', () => {
     loadCalendar();
 });
+// Render Weekly Calendar
+function renderWeeklyCalendar() {
+    const calendar = document.getElementById("calendar");
+    const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const currentDate = new Date();
+    const currentDay = currentDate.getDay(); // Get current day index
+    const todayDate = currentDate.getDate();
+
+    // Clear existing calendar
+    calendar.innerHTML = "";
+
+    // Create weekly calendar structure
+    const calendarTable = document.createElement("table");
+    calendarTable.className = "weekly-calendar";
+
+    // Table header for weekdays
+    const headerRow = document.createElement("tr");
+    weekDays.forEach((day, index) => {
+        const dayCell = document.createElement("th");
+        dayCell.textContent = day;
+
+        // Highlight current day
+        if (index === currentDay) {
+            dayCell.classList.add("highlight-day");
+        }
+
+        headerRow.appendChild(dayCell);
+    });
+
+    calendarTable.appendChild(headerRow);
+
+    // Table row for dates (assumes current week based on the current day)
+    const dateRow = document.createElement("tr");
+    weekDays.forEach((_, index) => {
+        const dateCell = document.createElement("td");
+        const diff = index - currentDay; // Difference from the current day
+        const date = new Date(currentDate);
+        date.setDate(todayDate + diff); // Adjust to correct date for the week
+        dateCell.textContent = date.getDate();
+
+        // Highlight current day
+        if (index === currentDay) {
+            dateCell.classList.add("highlight-date");
+        }
+
+        dateRow.appendChild(dateCell);
+    });
+
+    calendarTable.appendChild(dateRow);
+
+    // Append calendar to the section
+    calendar.appendChild(calendarTable);
+}
+
+// Initialize Weekly Calendar on Page Load
+window.onload = function () {
+    startAutoTimer(); // Auto Timer
+    renderTimetable(); // Render Timetable
+    renderNotes(); // Render Notes
+    renderWeeklyCalendar(); // Render Calendar
+};
