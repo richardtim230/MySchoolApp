@@ -1,3 +1,46 @@
+// Array of Motivational Quotes
+const motivationalQuotes = [
+    "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+    "Education is the most powerful weapon which you can use to change the world.",
+    "The best way to predict your future is to create it.",
+    "Don’t watch the clock; do what it does. Keep going.",
+    "The beautiful thing about learning is that no one can take it away from you.",
+    "Strive for progress, not perfection.",
+    "You don’t have to be great to start, but you have to start to be great.",
+    "Believe you can and you're halfway there.",
+    "Learning is never done without errors and defeat.",
+    "The expert in anything was once a beginner."
+];
+
+// Show Pop-Up with Motivational Quote
+function showWelcomePopup() {
+    const popup = document.getElementById("welcome-popup");
+    const quoteElement = document.getElementById("motivational-quote");
+
+    // Generate a random quote
+    const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+    quoteElement.textContent = randomQuote;
+
+    // Show the popup
+    popup.style.display = "flex";
+}
+
+// Close Pop-Up
+function closeWelcomePopup() {
+    const popup = document.getElementById("welcome-popup");
+    popup.style.display = "none";
+}
+
+// Initialize Welcome Popup on Page Load
+window.onload = function () {
+    showWelcomePopup();
+    startAutoTimer(); // Auto Timer
+    renderTimetable(); // Render Timetable
+    renderNotes(); // Render Notes
+    renderWeeklyCalendar(); // Render Calendar
+};
+
+
 // Pop-up functionality
 const popup = document.getElementById('popup');
 const closePopup = document.getElementById('close-popup');
