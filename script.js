@@ -297,3 +297,70 @@ window.onload = function () {
     renderNotes(); // Render Notes
     renderWeeklyCalendar(); // Render Calendar
 };
+// Automatic Timer Variables
+let autoTimerSeconds = 0; // Seconds elapsed since app launch
+const autoTimerDisplay = document.getElementById("timer-minutes");
+const autoTimerSecondsDisplay = document.getElementById("timer-seconds");
+
+// Manual Stopwatch Variables
+let stopwatchInterval = null; // Interval for stopwatch
+let stopwatchRunning = false;
+let stopwatchSeconds = 0;
+const stopwatchMinutesDisplay = document.getElementById("stopwatch-minutes");
+const stopwatchSecondsDisplay = document.getElementById("stopwatch-seconds");
+
+// Start Automatic Timer
+function startAutoTimer() {
+    setInterval(() => {
+        autoTimerSeconds++;
+        const minutes = Math.floor(autoTimerSeconds / 60);
+        const seconds = autoTimerSeconds % 60;
+
+        autoTimerDisplay.textContent = String(minutes).padStart(2, "0");
+        autoTimerSecondsDisplay.textContent = String(seconds).padStart(2, "0");
+    }, 1000); // Update every second
+}
+
+// Start Manual Stopwatch
+function startStopwatch() {
+    if (!stopwatchRunning) {
+        stopwatchRunning = true;
+        stopwatchInterval = setInterval(() => {
+            stopwatchSeconds++;
+            const minutes = Math.floor(stopwatchSeconds / 60);
+            const seconds = stopwatchSeconds % 60;
+
+            stopwatchMinutesDisplay.textContent = String(minutes).padStart(2, "0");
+            stopwatchSecondsDisplay.textContent = String(seconds).padStart(2, "0");
+        }, 1000); // Update every second
+    }
+}
+
+// Stop Manual Stopwatch
+function stopStopwatch() {
+    if (stopwatchRunning) {
+        clearInterval(stopwatchInterval);
+        stopwatchRunning = false;
+    }
+}
+
+// Reset Manual Stopwatch
+function resetStopwatch() {
+    clearInterval(stopwatchInterval);
+    stopwatchRunning = false;
+    stopwatchSeconds = 0;
+    stopwatchMinutesDisplay.textContent = "00";
+    stopwatchSecondsDisplay.textContent = "00";
+}
+
+// Attach Event Listeners to Stopwatch Buttons
+document.getElementById("start-stopwatch").addEventListener("click", startStopwatch);
+document.getElementById("stop-stopwatch").addEventListener("click", stopStopwatch);
+document.getElementById("reset-stopwatch").addEventListener("click", resetStopwatch);
+
+// Start the Automatic Timer on Page Load
+window.onload = function () {
+    startAutoTimer();
+    renderTimetable();
+    renderNotes();
+};
